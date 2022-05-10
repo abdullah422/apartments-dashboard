@@ -9,6 +9,7 @@ use App\Models\Image;
 use App\Models\Place;
 use App\Models\Apartment;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use phpDocumentor\Reflection\Type;
 use Yajra\DataTables\DataTables;
@@ -38,6 +39,7 @@ class ApartmentController extends Controller
             ->whenState(request()->state)
             ->with(['place'])->with('images');
         return DataTables::of($apartments)
+            ->addIndexColumn()
 
             ->editColumn('created_at', function (Apartment $apartment) {
                 return $apartment->created_at->format('Y-m-d');
@@ -181,4 +183,17 @@ class ApartmentController extends Controller
         $apartment->delete();
 
     }// end of delete
+
+    function generateShipmentId($length)
+    {
+        $number = '';
+
+        do {
+            for ($i=$length; $i--; $i>0) {
+                $number .= mt_rand(0,9);
+            }
+        } while ( !empty(DB::table('apartments')->where('code', $number)->first(['code'])) );
+
+        return $number;
+    }
 }

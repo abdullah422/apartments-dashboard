@@ -25,17 +25,19 @@ class AdminRequest extends FormRequest
     {
         $rules = [
             'name' => 'required',
-            'email' => 'required|email|unique:users',
+            'email' => 'nullable|unique:users,email|email',
+            'phone' => 'required|unique:users,phone|max:11|min:11',
             'password' => 'required|confirmed',
             'type' => 'required',
             'role_id' => 'required',
         ];
 
         if (in_array($this->method(), ['PUT', 'PATCH'])) {
-            
+
             $admin = $this->route()->parameter('admin');
 
-            $rules['email'] = 'required|email|unique:users,id,' . $admin->id;
+            $rules['email'] = 'nullable|email|unique:users,email,' . $admin->id;
+            $rules['phone'] = 'required|max:11|min:11|unique:users,phone,' . $admin->id;
             $rules['password'] = '';
 
         }//end of if

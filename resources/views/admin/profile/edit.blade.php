@@ -29,10 +29,16 @@
                         <input type="text" name="name" class="form-control" value="{{ old('name', auth()->user()->name) }}" required>
                     </div>
 
+                    {{--phone--}}
+                    <div class="form-group">
+                        <label>@lang('users.phone')</label>
+                        <input type="tel" name="phone" class="form-control" value="{{ old('phone', auth()->user()->phone) }}">
+                    </div>
+
                     {{--email--}}
                     <div class="form-group">
                         <label>@lang('users.email')</label>
-                        <input type="email" name="email" class="form-control" value="{{ old('email', auth()->user()->email) }}" required>
+                        <input type="email" name="email" class="form-control" value="{{ old('email', auth()->user()->email) }}">
                     </div>
 
                     {{--image--}}

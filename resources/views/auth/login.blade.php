@@ -160,11 +160,11 @@
                 @csrf
                 <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>SIGN IN</h3>
                 <div class="form-group row">
-                    <label class="control-label">EMAIL</label>
+                    <label class="control-label">USER NAME OR EMAIL</label>
                     <div class="col-md-12">
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                        <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
 
-                        @error('email')
+                        @error('username')
                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

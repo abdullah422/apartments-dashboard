@@ -118,6 +118,7 @@
                                             </label>
                                         </div>
                                     </th>
+                                    <th>index</th>
                                     <th>@lang('apartments.owner')</th>
                                     <th>@lang('apartments.place')</th>
                                     <th>@lang('apartments.type')</th>
@@ -168,6 +169,7 @@
             },
             columns: [
                 {data: 'record_select', name: 'record_select', searchable: false, sortable: false, width: '1%'},
+                {data: 'DT_RowIndex', name: 'DT_RowIndex',sortable: false,},
                 {data: 'owner', name: 'owner', searchable: false, sortable: false},
                 {data: 'place', name: 'place', searchable: false, sortable: false},
                 {data: 'type', name: 'type', width: '8%', searchable: false, sortable: false},

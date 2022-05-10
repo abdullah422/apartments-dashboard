@@ -16,14 +16,14 @@ class  AuthController extends Controller
     public function login(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'email' => 'required',
+            'phone' => 'required',
             'password' => 'required',
         ],$this->message());
 
         if ($validator->fails()) {
             return response()->api([], 1, $validator->errors()->first());
         }
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('phone', 'password');
         if (Auth::attempt($credentials)) {
 
             $user = Auth::user();
@@ -43,9 +43,8 @@ class  AuthController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'email' => 'required|unique:users,email',
-            'password' => 'required|min:6',
             'phone' => 'required|unique:users,phone|max:11|string',
+            'password' => 'required|min:6',
             'type' => 'required'
         ], $this->message());
 
@@ -55,7 +54,6 @@ class  AuthController extends Controller
 
         $user = User::create([
             'name' => $request->name,
-            'email' => $request->email,
             'type' => $request->type,
             'phone' => $request->phone,
             'password' => bcrypt($request->password),
@@ -117,13 +115,11 @@ class  AuthController extends Controller
             'name.required'=>'الاسم مطلوب',
             'password.min'=>'كلمة السر قصيرة',
             'password.required'=>'كلمة السر مطلوبة',
-            'email.required'=>'البريد الالكتروني مطلوب',
             'phone.required'=>'رقم المحمول مطلوب',
             'type.required'=>'نوع المستخدم مطلوب',
             'phone.unique'=>'رقم المحمول مستخدم مسبقا',
             'phone.max'=>'رقم المحمول مستخدم غير صالج',
             'phone.numeric'=>'رقم المحمول مستخدم غير صالج',
-            'email.unique'=>'هذا البرد الالكتروني مستخدم مسبقا',
         ];
     }
 

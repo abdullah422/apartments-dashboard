@@ -16,19 +16,19 @@
 
             {{--top statistics--}}
             <div class="row" id="top-statistics">
-                <div class="col-md-4">
+                {{--<div class="col-md-4">
                     <div class="widget-small primary coloured-icon"><i class="icon fa fa-users fa-3x"></i>
                         <div class="info">
                             <h4>Users </h4>
                             <p><b>5</b></p>
                         </div>
                     </div>
-                </div>
+                </div>--}}
                 {{--users--}}
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-body">
-                            <div class="d-flex justify-content-between mb-1 card-body-users ">
+                            <div class="d-flex justify-content-between mb-1">
                                 <h5 class="mb-3"><span class="fa fa-users px-1"></span>@lang('users.users')</h5>
                                 <a href="{{ route('admin.users.index') }}">@lang('site.show_all')</a>
                             </div>

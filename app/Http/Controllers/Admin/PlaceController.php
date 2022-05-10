@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PlaceRequest;
+use App\Models\Apartment;
 use App\Models\Place;
 use Yajra\DataTables\DataTables;
 
@@ -71,9 +72,18 @@ class PlaceController extends Controller
 
     public function destroy(Place $place)
     {
-        $this->delete($place);
-        session()->flash('success', __('site.deleted_successfully'));
-        return response(__('site.deleted_successfully'));
+        //$id = $place->id;
+        $apartments = Apartment::where('id', $place->id)->count();
+        if ($apartments<1){
+            session()->flash('error', __('site.can_not_delete'));
+            return response(__('site.can_not_delete'));
+        }
+        else{
+            $this->delete($place);
+            session()->flash('success', __('site.deleted_successfully'));
+            return response(__('site.deleted_successfully'));
+
+        }
 
     }// end of destroy
 

@@ -30,10 +30,16 @@
                         <input type="text" name="name" class="form-control" value="{{ old('name', $owner->name) }}" required>
                     </div>
 
+                    {{--phone--}}
+                    <div class="form-group">
+                        <label>@lang('users.phone')<span class="text-danger">*</span></label>
+                        <input type="tel" name="phone" class="form-control" value="{{ old('phone', $owner->phone) }}" required>
+                    </div>
+
                     {{--email--}}
                     <div class="form-group">
                         <label>@lang('users.email') <span class="text-danger">*</span></label>
-                        <input type="email" name="email" class="form-control" value="{{ old('email', $owner->email) }}" required>
+                        <input type="email" name="email" class="form-control" value="{{ old('email', $owner->email) }}">
                     </div>
 
                     {{--role_id--}}{{--

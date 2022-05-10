@@ -25,7 +25,8 @@ class UserRequest extends FormRequest
     {
         $rules = [
             'name' => 'required',
-            'email' => 'required|email|unique:users',
+            'email' => 'nullable|unique:users,email|email',
+            'phone' => 'required|unique:users,phone|max:11|min:11',
             'password' => 'required|confirmed',
             'type' => 'required',
         ];
@@ -34,7 +35,8 @@ class UserRequest extends FormRequest
 
             $user = $this->route()->parameter('user');
 
-            $rules['email'] = 'required|email|unique:users,id,' . $user->id;
+            $rules['email'] = 'nullable|email|unique:users,email,' . $user->id;
+            $rules['phone'] = 'required|max:11|min:11|unique:users,phone,' . $user->id;
             $rules['password'] = '';
 
         }//end of if

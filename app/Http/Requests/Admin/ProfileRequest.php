@@ -25,7 +25,8 @@ class ProfileRequest extends FormRequest
     {
         $rules = [
             'name' => 'required',
-            'email' => 'required|email|unique:users,id,' . auth()->user()->id,
+            'phone' => 'required|max:11|min:11|unique:users,phone,' .  auth()->user()->id,
+            'email' => 'nullable|email|unique:users,email,' . auth()->user()->id,
             'image' => 'sometimes|nullable|image',
         ];
 

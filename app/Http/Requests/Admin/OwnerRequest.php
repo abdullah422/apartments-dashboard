@@ -25,7 +25,8 @@ class OwnerRequest extends FormRequest
     {
         $rules = [
             'name' => 'required',
-            'email' => 'required|email|unique:users',
+            'email' => 'nullable|unique:users,email|email',
+            'phone' => 'required|unique:users,phone|max:11|min:11',
             'password' => 'required|confirmed',
             'type' => 'required',
         ];
@@ -34,8 +35,8 @@ class OwnerRequest extends FormRequest
 
             $owner = $this->route()->parameter('owner');
 
-            $rules['email'] = 'required|email|unique:users,id,' . $owner->id;
-            $rules['password'] = '';
+            $rules['email'] = 'nullable|email|unique:users,email,' . $owner->id;
+            $rules['phone'] = 'required|max:11|min:11|unique:users,phone,' . $owner->id;
 
         }//end of if
 

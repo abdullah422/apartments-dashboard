@@ -16,6 +16,7 @@ return [
     'no_data_found' => 'Sorry no data found',
     'added_successfully' => 'Record added successfully',
     'updated_successfully' => 'Record updated successfully',
+    'can_not_delete' => 'You cannot delete this record because there are related apartments',
     'deleted_successfully' => 'Record deleted successfully',
     'confirm_delete' => 'Confirm deletion',
     'yes' => 'Yes',

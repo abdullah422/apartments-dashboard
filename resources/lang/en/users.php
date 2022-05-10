@@ -4,6 +4,7 @@ return [
     'users' => 'Users',
     'user' => 'User',
     'name' => 'Name',
+    'phone' => 'Phone',
     'email' => 'Email',
     'image' => 'Image',
     'old_password' => 'Old password',
